@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+.header{
+background-color: #00BFFF;
+padding: 10px;
+text-align: center;
+ font-size: 25px;
+}
+
+/* Style the topnav */
+ul.topnav {
+  display: flex;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  background-color: #333333;
+}
+
+/* Style links in topnav */
+ul.topnav li a {
+  display: block;
+  color: #f1f1f1;
+  padding: 8px 16px;
+  text-decoration: none;
+  font-size: 40px;
+}
+
+/* Change color on hover */
+ul.topnav li a:hover {
+  background-color: #dddddd;
+  color: black;
+}
+
+/* css with marquee */
+.rotate {
+  width: auto;
+  background: linear-gradient(90deg, #ff0000, #ff6600);
+  color: #fff;
+  font-size: 22px;
+  font-weight: bold;
+  padding: 5px 16px;
+  text-align: center;
+  border-radius: 5px;
+  overflow: hidden;
+  position: relative;
+}
+
+.rotate h3 {
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+/* Replace <marquee> with CSS animation */
+.rotate span {
+  display: inline-block;
+  position: absolute;
+  white-space: nowrap;
+  animation: scroll-left 10s linear infinite;
+}
+
+@keyframes scroll-left {
+  from { left: 100%; }
+  to   { left: -100%; }
+}
+/* Style links in imgcomment */
+.imgcomment {
+  width: 265px;
+  padding: 10px;
+  height: 502px;
+  border: 2px solid #333;    /* add a dark solid border */
+  text-align: center; /* centers both title and image */
+}
+
+.imgcomment img {
+  width: 100%;   /* makes image fit the div */
+  height: auto;  /* keeps proportions */
+}
+.imgcomment button {
+  background-color: #4CAF50; /* green background */
+  color: white;              /* white text */
+  padding: 10px 20px;        /* vertical and horizontal spacing */
+  border: 2px solid #333;    /* add a dark solid border */
+
+  border-radius: 5px;        /* rounded corners */
+  cursor: pointer;           /* pointer on hover */
+  font-size: 16px;           /* text size */
+}
+
+/* For slider box */
+
+.my-box {
+  width: 1000px;
+  height: 525px;
+  background-color: lightblue;
+  border: 3px solid #333;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+  display: flex;
+
+  position: absolute;   /* or relative/fixed depending on need */
+  left: 300px;          /* horizontal offset */
+  top: 260px;           /* vertical offset */
+}
+
+.slider {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.slides {
+  display: flex;
+  width: 100%;   /* 4 slides */
+  height: 100%;
+  transition: transform 0.6s ease;
+}
+
+.slide {
+  width: 100%;
+  flex-shrink: 0;
+}
+
+.slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Hide radio buttons */
+input[type=radio] {
+  display: none;
+}
+
+/* Position slides based on checked radio */
+#s1:checked ~ .slides { transform: translateX(0%); }
+#s2:checked ~ .slides { transform: translateX(-100%); }
+#s3:checked ~ .slides { transform: translateX(-200%); }
+#s4:checked ~ .slides { transform: translateX(-300%); }
+
+/* Navigation dots */
+.nav {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+}
+
+.nav label {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #333;
+  cursor: pointer;
+}
+
+/* ---- VERTICAL SIDEBAR ---- */
+    .sidebar {
+        width: 300px;
+        height: 95vh;
+        background: #444;
+        padding-top: 20px;
+        position: absolute; /* keep it fit on the left */
+        top: 260px; /* place below the horizontal bar */
+	left: 1720px;
+    }
+
+    .sidebar a {
+        display: block;
+        padding: 12px 20px;
+        color: white;
+        text-decoration: none;
+        font-size: 35px;
+    }
+
+    .sidebar a:hover {
+        background: #666;
+    }
+  
+li a, .dropbtn {
+  display: inline-block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover, .dropdown:hover .dropbtn {
+  background-color: red;
+}
+
+li.dropdown {
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.dropdown-content a:hover {background-color: #f1f1f1;}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+/* notice box */
+.notice-box {
+      width: 416px;
+      height: 945px;
+      border: 2px solid #333;
+      border-radius: 8px;
+      overflow: hidden;
+      background: #f0f8ff;
+      position: absolute;
+      left: 1305px;
+      top: 262px;
+    }
+
+    .notice-list {
+      display: flex;
+      flex-direction: column;
+      position: absolute;
+      bottom: -100%;   /* start below the box */
+      animation: scroll-up 8s linear infinite;
+    }
+
+    .notice-list p {
+      margin: 0;
+      padding: 20px;
+      border-bottom: 1px solid #ccc;
+      background: #e6f2ff;
+    }
+
+    @keyframes scroll-up {
+      0%   { bottom: -100%; }
+      100% { bottom: 100%; }
+    }
+
+/* bottom education desk */
+.flex-links1 {
+  width: 500px;
+  height: 400px;
+  background-color: lightblue;
+  border: 3px solid #333;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+  display: flex;
+  flex-direction: column;     /* stack items vertically */
+
+
+  position: absolute;   /* or relative/fixed depending on need */
+  left: 0px;          /* horizontal offset */
+  top: 793px;           /* vertical offset */
+}
+
+/* bottom education desk */
+.flex-links2 {
+  width: 500px;
+  height: 400px;
+  background-color: lightblue;
+  border: 3px solid #333;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+  display: flex;
+  flex-direction: column;     /* stack items vertically */
+  position: absolute;   /* or relative/fixed depending on need */
+  left: 502px;          /* horizontal offset */
+  top: 793px;           /* vertical offset */
+}
+
+/* bottom education desk */
+.flex-links3 {
+  width: 294px;
+  height: 400px;
+  background-color: lightblue;
+  border: 3px solid #333;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+  display: flex;
+  flex-direction: column;     /* stack items vertically */
+  position: absolute;   /* or relative/fixed depending on need */
+  left: 1005px;          /* horizontal offset */
+  top: 793px;           /* vertical offset */
+}
+
+
+</style>
+</head>
+<body>
+<!-- header -->
+
+<div class="header">
+	<h1>TECH HAWK</h1>        
+</div>
+<div class="topnav">
+<ul class="topnav">
+  <li><a href="#">Home</a></li>
+  <li><a href="#">News</a></li>
+  <li><a href="#">Contact</a></li>
+  <li><a href="#">photos</a></li>
+  <li><a href="#">group photos</a></li>
+  <li><a href="#">videos</a></li>
+  <li><a href="#">About</a></li>
+</ul>
+
+	       
+</div>
+
+<div class="rotate">
+	<h3><marquee>TECH HAWK IS A PROMINENT TEAM. It works with latest technology.</marquee></h3>	
+</div>
+
+
+
+<div class="imgcomment">
+	<h2>1st CDS</h2>
+	<img src="D:\study\SEM III JULY25\web dev\bipin rawat.jpg">
+	<button>ABOUT</button>
+
+</div>
+<div class="my-box">
+  <div class="slider">
+    <!-- Radio buttons for slides -->
+    <input type="radio" name="slide" id="s1" checked>
+    <input type="radio" name="slide" id="s2">
+    <input type="radio" name="slide" id="s3">
+    <input type="radio" name="slide" id="s4">
+
+    <!-- Slides -->
+    <div class="slides">
+      <div class="slide"><img src="sqdpic4.jpg" alt="Image 1"></div>
+      <div class="slide"><img src="itpic2.jpg" alt="Image 2"></div>
+      <div class="slide"><img src="run pic 5.jpg" alt="Image 3"></div>
+      <div class="slide"><img src="basketball.jpg" alt="Image 4"></div>
+    </div>
+
+    <!-- Navigation -->
+    <div class="nav">
+      <label for="s1"></label>
+      <label for="s2"></label>
+      <label for="s3"></label>
+      <label for="s4"></label>
+    </div>
+  </div>
+</div>
+<div>
+<!-- Vertical Navigation -->
+    <div class="sidebar">
+        
+        <li class="dropdown">
+    <a href="javascript:void(0)" class="dropbtn">Biodata</a>
+    <div class="dropdown-content">
+      <a href="#">Junior ldr</a>
+      <a href="#">Junior ldr1</a>
+      <a href="#">Junior ldr2</a>
+    </div>
+  </li>
+
+        <li class="dropdown">
+    <a href="javascript:void(0)" class="dropbtn">Imp Link</a>
+    <div class="dropdown-content">
+      <a href="#">youtube</a>
+      <a href="#">whatsapp</a>
+      <a href="#">chatgpt</a>
+    </div>
+  </li>
+	<li class="dropdown">
+    <a href="javascript:void(0)" class="dropbtn">Course Lagging</a>
+    <div class="dropdown-content">
+      <a href="#">"N"</a>
+      <a href="#">"MR"</a>
+      <a href="#">"MR+N"</a>
+    </div>
+  </li>
+        <li class="dropdown">
+    <a href="javascript:void(0)" class="dropbtn">SPL event</a>
+    <div class="dropdown-content">
+      <a href="#">Jan</a>
+      <a href="#">Feb</a>
+      <a href="#">Mar</a>
+      <a href="#">Apr</a>
+      <a href="#">May</a>
+      <a href="#">Jun</a>
+      <a href="#">Jul</a>
+      <a href="#">Aug</a>
+      <a href="#">Sep</a>
+      <a href="#">Oct</a>
+      <a href="#">Nov</a>
+      <a href="#">Dec</a>
+    </div>
+  </li>
+        <li class="dropdown">
+    <a href="javascript:void(0)" class="dropbtn">Forms</a>
+    <div class="dropdown-content">
+      <a href="#">NIR</a>
+      <a href="#">Leave cert</a>
+      <a href="#">QTR appln</a>
+      <a href="#">Canteen card</a>
+    </div>
+  </li>
+
+        <a href="#">Hamraaz</a>
+        
+	<a href="https://www.gooogle.com">Google</a>
+	<a href="#">Log out</a>
+
+
+    </div>
+
+</div>
+<div class="notice-box">
+  <div class="notice-list">
+    <p>🔔 Notice 1: FWC at 04 PM</p>
+    <p>📢 Notice 2: TEA break arrange on 11:55 AM</p>
+    <p>⚡ Notice 3: Server maintenance tonight</p>
+    <p>✅ Notice 4: New policy updates available</p>
+    <p>🔔 Notice 5: AME carrying out by hospital, all members compulsery to done before Dec 2025</p>
+    <p>📢 Notice 6: Submit reports by Friday</p>
+    <p>⚡ Notice 7: Server maintenance tonight</p>
+    <p>✅ Notice 8: New policy updates available</p>
+    <p>🔔 Notice 9: Meeting at 10 AM</p>
+    <p>📢 Notice 10: Submit reports by Friday</p>
+    <p>⚡ Notice 11: Server maintenance tonight</p>
+    <p>✅ Notice 12: New policy updates available</p>
+    <p>🔔 Notice 13: Meeting at 10 AM</p>
+    <p>📢 Notice 14: Submit reports by Friday</p>
+    <p>⚡ Notice 15: Server maintenance tonight</p>
+    <p>✅ Notice 16: New policy updates available</p>
+  </div>
+</div>
+
+<div class="flex-links1">
+    <h2>Eresources>ebook>download</h2>
+    <a href="https://www.example.com" style="font-size:20px;">SEM I</a>
+     <a href="https://www.example.com" style="font-size:20px;">SEM II</a>
+    <a href="https://www.example.com" style="font-size:20px;">SEM III</a>
+    <a href="https://www.example.com" style="font-size:20px;">SEM IV</a>
+    <a href="https://www.example.com" style="font-size:20px;">Artificial Intelligence</a>
+    <a href="https://www.example.com" style="font-size:20px;">Microcontroller</a>
+
+    
+  </div>
+<div class="flex-links2">
+    <h2>Next Schedlue</h2>
+    <a href="https://www.example.com" style="font-size:20px;">Final Project</a>
+     <a href="https://www.example.com" style="font-size:20px;">Final Exam</a>
+    <a href="https://www.example.com" style="font-size:20px;">PH Test result</a>
+    <a href="https://www.example.com" style="font-size:20px;">Lagging Qualification</a>
+    <a href="https://www.example.com" style="font-size:20px;">Leave Schedule</a>
+    <a href="https://www.example.com" style="font-size:20px;">Annual Adventure</a>
+
+  </div>
+
+<div class="flex-links3">
+    <h2>ADVENTURE</h2>
+    <a href="https://www.example.com" style="font-size:20px;">Running Comp</a>
+     <a href="https://www.example.com" style="font-size:20px;">Outdoor Games</a>
+    <a href="https://www.example.com" style="font-size:20px;">VVIP prog Arrg</a>
+    <a href="https://www.example.com" style="font-size:20px;">Biking Activity</a>
+    <a href="https://www.example.com" style="font-size:20px;">Sports Banner</a>
+    <a href="https://www.example.com" style="font-size:20px;">Quaking</a>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+<footer style="
+  position: absolute;
+  top: 1200px;   /* distance from top */
+  left: 0px;   /* distance from left */
+  width: 2000px;
+  background: #444;
+  color: #fff;
+  text-align: center;
+  padding: 10px;">
+  THANKS for visiting TECH HAWK. Contact no- 9642154821.  Email id - techhawk166@gmail.com  ,  Adress:- Mhow, near Indore, C mess 2nd floor, MP, India, Pin 453441
+</footer>
+
+    
+
+</html>
